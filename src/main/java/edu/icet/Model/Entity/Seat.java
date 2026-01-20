@@ -1,5 +1,9 @@
 package edu.icet.Model.Entity;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import edu.icet.Enum.SeatStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,14 +16,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "event_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Event event;
 
     @Column(name = "seat_number", nullable = false)

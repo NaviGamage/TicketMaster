@@ -1,5 +1,9 @@
 package edu.icet.Model.Entity;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import edu.icet.Enum.UserTier;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,6 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @Id
