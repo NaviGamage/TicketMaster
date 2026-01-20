@@ -1,0 +1,330 @@
+{
+  "info": {
+    "name": "TicketMaster API",
+    "description": "High-Concurrency Event Booking Engine - Complete API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Seats",
+      "item": [
+        {
+          "name": "Hold Seat (User 1)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/seats/1/hold",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "1", "hold"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Hold Seat (User 2 - Should Fail)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/seats/1/hold",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "1", "hold"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Available Seats for Event",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/seats/event/1/available",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "event", "1", "available"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Seats for Event",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/seats/event/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "event", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Calculate Price (Regular User)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"eventId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/calculate-price",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "calculate-price"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calculate Price (VIP User - Normal Event)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"eventId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/calculate-price",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "calculate-price"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calculate Price (VIP User - High Demand Event)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"eventId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/calculate-price",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "calculate-price"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calculate Price (Platinum User)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 3,\n  \"eventId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/calculate-price",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "calculate-price"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"seatId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/confirm",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "confirm"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "user", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/1/cancel?userId=1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "1", "cancel"],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Concurrency Test Scenarios",
+      "item": [
+        {
+          "name": "Test 1: Hold Seat Successfully",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/seats/5/hold",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "5", "hold"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test 2: Try to Hold Same Seat (Expect Error with Remaining Seconds)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/seats/5/hold",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "seats", "5", "hold"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test 3: Confirm Booking Without Hold (Expect Failure)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"seatId\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/bookings/confirm",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "bookings", "confirm"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
