@@ -19,7 +19,7 @@ public class AuditAspect {
     private final AuditLogRepository auditLogRepository;
 
     @AfterThrowing(
-            pointcut = "@annotation(com.ticketmaster.annotation.AuditFailure)",
+            pointcut = "@annotation(edu.icet.Annotation.AuditFailure)",
             throwing = "exception"
     )
     public void auditFailure(JoinPoint joinPoint, Exception exception) {
